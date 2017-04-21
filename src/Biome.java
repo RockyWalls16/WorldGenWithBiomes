@@ -1,5 +1,10 @@
 import java.awt.Color;
 
+/**
+ * Enum containing all biomes
+ * @author Valentin4311
+ *
+ */
 public enum Biome
 {
 	ABYSS(new Color(0, 0, 128), 10, 13, 0, 0, 0, 0, 0),
@@ -24,6 +29,17 @@ public enum Biome
 	private int maxRainFall;
 	private int priority;
 	
+	/**
+	 * Create a new biome
+	 * @param color, display color
+	 * @param minHeight, min height of the biome
+	 * @param maxHeight, max height of the biome
+	 * @param minTemp, min temperature
+	 * @param maxTemp, max temperature
+	 * @param minRainFall, min moist
+	 * @param maxRainFall, max moist
+	 * @param priority, if multiple biomes suits for a climate, world select the higher priority
+	 */
 	Biome(Color color, int minHeight, int maxHeight, int minTemp, int maxTemp, int minRainFall, int maxRainFall, int priority)
 	{
 		World.biomes.add(this);
@@ -82,6 +98,12 @@ public enum Biome
 		return this != ABYSS && this != OCEAN && this != BEACH;
 	}
 	
+	/**
+	 * Find the most suited biome for a certain temperature & moist
+	 * @param temperature
+	 * @param moist
+	 * @return most suited biome for climate
+	 */
 	public static Biome bestBiomeFor(float temp, float rainFall)
 	{
 		Biome best = null;
@@ -103,6 +125,6 @@ public enum Biome
 			}
 		}
 		
-		return best == null ? Biome.ABYSS : best;
+		return best == null ? Biome.FOREST : best;
 	}
 }

@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Represent world
+ * @author Valentin4311
+ *
+ */
 public class World
 {
 	private Chunk[][] chunkArray;

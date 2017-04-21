@@ -1,4 +1,8 @@
-
+/**
+ * Represent a 2D chunk
+ * @author Valentin4311
+ *
+ */
 public class Chunk
 {
 	private int x;

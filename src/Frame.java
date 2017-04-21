@@ -13,6 +13,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+/**
+ * Swing frame to visualize the world
+ * @author Valentin4311
+ *
+ */
 public class Frame extends JPanel
 {
 	private static final long serialVersionUID = 1L;
@@ -64,37 +69,44 @@ public class Frame extends JPanel
 			@Override
 			public void keyPressed(KeyEvent e)
 			{
+				//Display height map
 				if(e.getKeyChar() == 'h')
 				{
 					drawMode = 0;
 					repaint();
 				}
-				if(e.getKeyChar() == 'c')
+				//Display chunk grid
+				else if(e.getKeyChar() == 'c')
 				{
 					showGrid = !showGrid;
 					repaint();
 				}
-				if(e.getKeyChar() == 'b')
+				//Display biomes
+				else if(e.getKeyChar() == 'b')
 				{
 					drawMode = 1;
 					repaint();
 				}
-				if(e.getKeyChar() == 't')
+				//Display temperature
+				else if(e.getKeyChar() == 't')
 				{
 					drawMode = 2;
 					repaint();
 				}
-				if(e.getKeyChar() == 'm')
+				//Display moist
+				else if(e.getKeyChar() == 'm')
 				{
 					drawMode = 3;
 					repaint();
 				}
-				if(e.getKeyChar() == 'g')
+				//Regenerate a world
+				else if(e.getKeyChar() == 'g')
 				{
 					Frame.this.world = new World(sizeX, sizeZ);
 					repaint();
 				}
-				if(e.getKeyChar() == 's')
+				//Save world to map.png on your desktop
+				else if(e.getKeyChar() == 's')
 				{
 					try
 					{
@@ -136,7 +148,7 @@ public class Frame extends JPanel
 			{
 				Biome biome = world.biomeAt(x, z);
 				
-				
+				//Draw biomes
 				if(drawMode == 1)
 				{
 					if(biome != null)
@@ -148,16 +160,19 @@ public class Frame extends JPanel
 						g.setColor(Color.BLACK);
 					}
 				}
+				//Draw height map
 				else if(drawMode == 0)
 				{
 					float height = world.heightAt(x, z) / 255.0F;
 					g.setColor(new Color(height, height, height));
 				}
+				//Draw temperature map
 				else if(drawMode == 2)
 				{
 					float temp = world.tempAt(x, z);
 					g.setColor(ColorUtil.lerp(winter, Color.RED, temp / 100.0F));
 				}
+				//Draw moist map
 				else if(drawMode == 3)
 				{
 					float moist = world.moistAt(x, z);
@@ -167,6 +182,7 @@ public class Frame extends JPanel
 			}
 		}
 		
+		//Display chunk grid
 		if(showGrid)
 		{
 			g.setColor(grid);

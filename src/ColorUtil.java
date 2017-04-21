@@ -1,5 +1,10 @@
 import java.awt.Color;
 
+/**
+ * Helper for colors
+ * @author Valentin4311
+ *
+ */
 public class ColorUtil
 {
 	public static Color lerp(Color x, Color y, float blending)

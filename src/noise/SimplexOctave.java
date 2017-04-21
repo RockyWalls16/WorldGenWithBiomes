@@ -1,5 +1,10 @@
 package noise;
 
+/**
+ * 
+ * @author Valentin4311
+ *
+ */
 public class SimplexOctave
 {
 	private SimplexNoise[] octaves;
